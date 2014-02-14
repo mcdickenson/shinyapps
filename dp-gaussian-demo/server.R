@@ -75,7 +75,6 @@ shinyServer(function(input, output){
     lambda = input$lambda
     data = gmm_sampler(n, alpha, mu_0, lambda, S, v, legend=TRUE)
     K = length(unique(data$z))
-    print(unique(data$z))
     
     par(mfrow=c(2,1))
     plot(data$x[,1], data$x[,2], col=data$z,
