@@ -9,20 +9,50 @@ library(shiny)
 
 shinyUI(pageWithSidebar(
   
-  # Application title
-  headerPanel("New Application"),
+  headerPanel("Dirichlet Process Mixture of Gaussians"),
   
-  # Sidebar with a slider input for number of observations
   sidebarPanel(
-    sliderInput("obs", 
-                "Number of observations:", 
-                min = 1, 
-                max = 1000, 
-                value = 500)
+    sliderInput("alpha",
+                "Alpha",
+                value=1,
+                min=0,
+                max=1,
+                step=0.2
+    ),
+    sliderInput("rho",
+                "Correlation(X,Y)",
+                value=0,
+                min=-0.8,
+                max=0.8,
+                step=0.2
+    ),
+    sliderInput("mu_x",
+                "Mean(X)",
+                value=0,
+                min=-5,
+                max=5   
+    ),
+    sliderInput("mu_y",
+                "Mean(Y)",
+                value=0,
+                min=-5,
+                max=5   
+    ),
+    sliderInput("v",
+                "Inverse Variance",
+                value=5,
+                min=2,
+                max=10
+    ),
+    sliderInput("lambda",
+                "Lambda",
+                value=1,
+                min=1,
+                max=5   
+    )
   ),
   
-  # Show a plot of the generated distribution
   mainPanel(
-    plotOutput("distPlot")
+    plotOutput("gaussPlot", height="100%")
   )
 ))
